@@ -6,30 +6,25 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.app.Activity;
 
 public class Calkulator extends AppCompatActivity {
     TextView op;
     private int operation;
     private String op1;
     private String op2;
+    private boolean changeOp = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calckulator);
 
-
         View.OnClickListener oclb = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Button btn = (Button) v;
                 addToScreen(((Button) v).getText().toString());
-            }
-        };
-        View.OnClickListener oclo = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onOperation(v);
             }
         };
 
@@ -43,6 +38,14 @@ public class Calkulator extends AppCompatActivity {
         ((Button) findViewById(R.id.btn7)).setOnClickListener(oclb);
         ((Button) findViewById(R.id.btn8)).setOnClickListener(oclb);
         ((Button) findViewById(R.id.btn9)).setOnClickListener(oclb);
+
+
+        View.OnClickListener oclo = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onOperation(v);
+            }
+        };
         ((Button) findViewById(R.id.btnPlus)).setOnClickListener(oclo);
         ((Button) findViewById(R.id.btnMenus)).setOnClickListener(oclo);
         ((Button) findViewById(R.id.btnMultiplication)).setOnClickListener(oclo);
